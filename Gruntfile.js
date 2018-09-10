@@ -70,7 +70,7 @@ module.exports = function(grunt) {
                 kdbxweb: 'kdbxweb/dist/kdbxweb.js',
                 baron: 'baron/baron.min.js',
                 pikaday: 'pikaday/pikaday.js',
-                filesaver: 'FileSaver.js/FileSaver.min.js',
+                filesaver: 'file-saver/FileSaver.min.js',
                 qrcode: 'jsqrcode/dist/qrcode.min.js',
                 'argon2-asm': 'argon2-browser/docs/dist/argon2-asm.min.js',
                 'argon2-wasm': 'argon2-browser/docs/dist/argon2.wasm',
@@ -90,7 +90,7 @@ module.exports = function(grunt) {
                     { pattern: /@@COMMIT/g, replacement: function() { return grunt.config.get('gitinfo.local.branch.current.shortSHA'); } }
                 ]})},
                 { test: /baron(\.min)?\.js$/, loader: 'exports-loader?baron; delete window.baron;' },
-                { test: /pikaday\.js$/, loader: 'uglify-loader' },
+                { test: /pikaday\.js$/, loader: 'raw-loader' },
                 { test: /handlebars/, loader: 'strip-sourcemap-loader' },
                 { test: /\.js$/, exclude: /(node_modules|bower_components)/, loader: 'babel-loader',
                     query: { presets: ['es2015'], cacheDirectory: true }
